@@ -1,0 +1,112 @@
+- model: auth.user
+  pk: 1
+  fields:
+    username: admin
+    first_name: Admin
+    last_name: User
+    email: admin@example.org
+    password: pbkdf2_sha256$120000$Fe9XQ4egAZjp$UAddgJC3JVJU+JVSp5Rorr7QGHXLKFqxBvbmvaDQZgM=
+    is_superuser: true
+    is_staff: true
+    is_active: true
+- model: tests.pageview
+  pk: 1
+  fields:
+    ip_address: 1.2.3.4
+    date: 2018-11-8T6:00Z
+- model: tests.pageview
+  pk: 2
+  fields:
+    ip_address: 1.2.3.4
+    date: 2018-11-8T6:10Z
+- model: tests.pageview
+  pk: 3
+  fields:
+    ip_address: 1.2.3.5
+    date: 2018-11-8T6:00Z
+- model: tests.pageview
+  pk: 4
+  fields:
+    ip_address: 1.2.3.4
+    date: 2018-11-7T6:00Z
+- model: tests.pageview
+  pk: 5
+  fields:
+    ip_address: 1.2.3.4
+    date: 2018-11-7T6:02Z
+- model: tests.pageview
+  pk: 6
+  fields:
+    ip_address: 1.2.3.4
+    date: 2018-11-6T6:00Z
+- model: trackstats.domain
+  pk: 1
+  fields:
+    ref: page
+    name: Page Stats
+- model: trackstats.metric
+  pk: 1
+  fields:
+    domain: 1
+    ref: view
+    name: Page views
+- model: trackstats.statisticbydate
+  pk: 1
+  fields:
+    date: 2018-11-8
+    metric: 1
+    period: 86400
+    value: 3
+- model: trackstats.statisticbydate
+  pk: 2
+  fields:
+    date: 2018-11-7
+    metric: 1
+    period: 86400
+    value: 2
+- model: trackstats.statisticbydate
+  pk: 3
+  fields:
+    date: 2018-11-6
+    metric: 1
+    period: 86400
+    value: 1
+- model: django_graphlets.chart
+  pk: 1
+  fields:
+    title: Monthy Page Views
+    chart_type: line
+    until_type: t
+    period_count: 6
+    period_step: m
+- model: django_graphlets.criteria
+  pk: 1
+  fields:
+    stats_key: tests.pageview
+    chart: 1
+- model: django_graphlets.chart
+  pk: 2
+  fields:
+    title: Daily Page Views
+    chart_type: area-spline
+    until_type: t
+    period_count: 12
+    period_step: d
+- model: django_graphlets.criteria
+  pk: 2
+  fields:
+    stats_key: tests.pageview
+    chart: 2
+- model: django_graphlets.chart
+  pk: 3
+  fields:
+    title: Trackstats Test
+    chart_type: bar
+    until_type: t
+    period_count: 12
+    period_step: d
+- model: django_graphlets.criteria
+  pk: 3
+  fields:
+    stats_key: trackstats:page.view
+    chart: 3
